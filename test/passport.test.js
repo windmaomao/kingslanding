@@ -16,6 +16,7 @@ var httpCall = function(req, res, next) {
 var config = {
     port: 8085,
     mongo: 'mongodb://localhost/test',
+    drop: true,
     model: '../../test/fixture',
     controller: '../../test/fixture',
     passport: 'local',
@@ -24,7 +25,9 @@ var config = {
         blog: {}
     }
 };
-var request = require('supertest')('http://localhost:' + config.port);
+var supertest = require('supertest');
+var request = supertest.agent('http://localhost:' + config.port);
+var user = { username: 'root', password: 'root' };
 
 describe("Passport", function(){
 
@@ -45,20 +48,30 @@ describe("Passport", function(){
     });
 
     it("should return status false before login", function(done) {
-        request.get('/status').send({}).expect(200, done);
+        request.get('/status').send({}).expect(200, function(err, result) {
+            if (err) return done(err);
+            expect(result.body).to.be(false);
+            done();
+        });
     });
 
     it("should fail to authenticate if no user matches", function(done) {
-        var user = { username: 'root', password: 'root' };
         request.post('/login').send(user).expect(401, done);
     });
 
+    it("should register new user", function(done) {
+        request.post('/register').send(user).expect(200, done);
+    });
+
     it("should authenticate if user matches", function(done) {
-        var user = { username: 'fang', password: 'fang' };
-        var User = server.models.user;
-        User.update({ username: 'fang'}, user, {upsert: true}, function(err) {
-            if (err) { return done(err); }
-            request.post('/login').send(user).expect(200, done);
+        request.post('/login').send(user).expect(200, done);
+    });
+
+    it("should return status true after login", function(done) {
+        request.get('/status').send({}).expect(200, function(err, result) {
+            if (err) return done(err);
+            expect(result.body).to.be(true);
+            done();
         });
     });
 
