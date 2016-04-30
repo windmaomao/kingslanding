@@ -14,9 +14,13 @@
   },
   "dependencies": {
     "colors": "^1.1.2",
+    "cookie-parser": "^1.4.1",
+    "cookie-session": "^2.0.0-alpha.1",
     "lodash": "^4.11.1",
     "mongoose": "^4.4.12",
     "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "restify": "^4.0.4",
     "restify-mongoose": "^0.2.6"
   },
