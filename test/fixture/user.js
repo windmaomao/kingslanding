@@ -29,7 +29,5 @@ module.exports = {
     methods: {},
     indexes: {},
     virtuals: {},
-    plugins: {
-        'passport-local-mongoose': {}
-    }
+    plugins: {}
 }
