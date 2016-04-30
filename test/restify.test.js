@@ -51,4 +51,14 @@ describe("Model", function(){
         request.post('/blog').send({}).expect(201, done);
     });
 
+    it("should access models", function(done) {
+        expect(server.models).not.to.be(undefined);
+        done();
+    });
+
+    it("should register model blog", function(done) {
+        expect(server.models.blog).not.to.be(undefined);
+        done();
+    });
+
 });
