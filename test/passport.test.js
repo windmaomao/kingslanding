@@ -59,6 +59,10 @@ describe("Passport", function(){
         request.post('/login').send(user).expect(401, done);
     });
 
+    it("should fail to get user profile if not authenticated", function(done) {
+        request.get('/profile').expect(401, done);
+    });
+
     it("should register new user", function(done) {
         request.post('/register').send(user).expect(200, done);
     });
@@ -67,12 +71,69 @@ describe("Passport", function(){
         request.post('/login').send(user).expect(200, done);
     });
 
-    it("should return status true after login", function(done) {
+    it("should return status with user info after login", function(done) {
         request.get('/status').send({}).expect(200, function(err, result) {
             if (err) return done(err);
-            expect(result.body).to.be(true);
+            expect(result.body.username).to.be(user.username);
             done();
         });
     });
+
+    it("should return user profile", function(done) {
+        request.get('/profile').expect(200, function(err, result) {
+            if (err) return done(err);
+            expect(result.body.username).to.be(user.username);
+            done();
+        });
+    });
+
+    it("should update user profile", function(done) {
+        var profile = { firstname: 'Root' };
+        request.post('/profile').send(profile).expect(200, function(err, result) {
+            if (err) return done(err);
+            expect(result.body.firstname).to.be(profile.username);
+            done();
+        });
+    });
+
+    it("should keep username while setting user profile", function(done) {
+        var profile = { username: 'fjin' };
+        request.post('/profile').send(profile).expect(200, function(err, result) {
+            if (err) return done(err);
+            expect(result.body.username).to.be(user.username);
+            done();
+        });
+    });
+
+    it("should reset user to new password", function(done) {
+        var profile = {
+            password: 'abc',
+        };
+        request.post('/password').send(profile).expect(200, function(err, result) {
+            if (err) return done(err);
+            var user2 = {
+                username: user.username,
+                password: profile.password
+            };
+            request.post('/login').send(user2).expect(200, done);
+        });
+    });
+
+    it("should update user profile with password", function(done) {
+        var profile = {
+            username: user.username,
+            password: 'def',
+            firstname: 'DEF',
+        };
+        request.post('/profile').send(profile).expect(200, function(err, result) {
+            if (err) return done(err);
+            var user2 = {
+                username: user.username,
+                password: profile.password
+            };
+            request.post('/login').send(user2).expect(200, done);
+        });
+    });
+
 
 });
