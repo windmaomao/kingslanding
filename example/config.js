@@ -12,7 +12,9 @@ module.exports = {
     mongo: 'mongodb://localhost/test',
     model: __dirname,
     controller: __dirname,
+    passport: 'local',
     routes: {
+        user: {},
         blog: {}
     }
 }

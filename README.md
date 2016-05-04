@@ -8,7 +8,9 @@ npm install --save mongoose-restify-server
 
 ## Test
 
-npm test
+mocha -w controller.test.js
+
+Currently you can not launch all tests, ex. mocha -w. There's a issue launching the server again with different configuration settings.
 
 ## Usage
 

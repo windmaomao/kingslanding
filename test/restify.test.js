@@ -6,15 +6,10 @@
  * @date 4/28/16
  * @author Fang Jin <fang-a.jin@db.com>
  */
+require('./bootstrap');
 
-var expect = require('expect.js');
-var server = require('../lib/server.js');
-var httpCall = function(req, res, next) {
-    res.send('Hello server');
-    next();
-};
 var config = {
-    port: 8085,
+    port: options.port,
     mongo: 'mongodb://localhost/test',
     model: '../../test/fixture',
     controller: '../../test/fixture',
@@ -27,17 +22,11 @@ var config = {
         blog: {}
     }
 };
-var request = require('supertest')('http://localhost:' + config.port);
 
-describe("Model", function(){
+describe("Restify", function(){
 
-    before(function(done) {
-        server.lift(config, done);
-    });
-
-    after(function(done) {
-        server.lower(done);
-    });
+    before(function(done) { server.lift(config, done); });
+    after(function(done) { server.lower(done); });
 
     it("should route rest controller GET", function(done) {
         request.get('/rest').expect(200, done);

@@ -6,13 +6,8 @@
  * @date 4/30/16
  * @author Fang Jin <fang-a.jin@db.com>
  */
+require('./bootstrap');
 
-var expect = require('expect.js');
-var server = require('../lib/server.js');
-var httpCall = function(req, res, next) {
-    res.send('Hello server');
-    next();
-};
 var config = {
     port: 8085,
     mongo: 'mongodb://localhost/test',
@@ -25,8 +20,6 @@ var config = {
         blog: {}
     }
 };
-var supertest = require('supertest');
-var request = supertest.agent('http://localhost:' + config.port);
 var user = { username: 'root', password: 'root' };
 
 describe("Passport", function(){

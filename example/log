@@ -1,0 +1,85 @@
+2016-05-04T14:23:03.389Z - verbose: Log: On
+2016-05-04T14:23:03.392Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:23:03.457Z - verbose: Routes:
+2016-05-04T14:23:03.465Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:23:03.466Z - info: Passport: local
+2016-05-04T14:23:03.517Z - error: uncaughtException: Cannot read property 'createStrategy' of undefined date=Wed May 04 2016 10:23:03 GMT-0400 (Eastern Daylight Time), pid=7752, uid=null, gid=null, cwd=e:\Sites\GMI\eventservices\server\kingslanding\example, execPath=c:\Program Files\nodejs\node.exe, version=v4.0.0, argv=[c:\Program Files\nodejs\node.exe, e:\Sites\GMI\eventservices\server\kingslanding\example\index.js], rss=51486720, heapTotal=37101568, heapUsed=20439552, loadavg=[0, 0, 0], uptime=7418737.388012, trace=[column=26, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\component\passport.js, function=module.exports, line=32, method=exports, native=false, column=13, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\component\restify.js, function=Object.rest.lift, line=48, method=rest.lift, native=false, column=17, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js, function=null, line=38, method=null, native=false, column=5, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\component\mongoose.js, function=Object.mongo.lift, line=35, method=mongo.lift, native=false, column=14, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js, function=Object.server.lift, line=34, method=server.lift, native=false, column=8, file=e:\Sites\GMI\eventservices\server\kingslanding\example\index.js, function=, line=13, method=null, native=false, column=26, file=module.js, function=Module._compile, line=434, method=_compile, native=false, column=10, file=module.js, function=Object.Module._extensions..js, line=452, method=Module._extensions..js, native=false, column=32, file=module.js, function=Module.load, line=355, method=load, native=false, column=12, file=module.js, function=Function.Module._load, line=310, method=Module._load, native=false, column=10, file=module.js, function=Function.Module.runMain, line=475, method=Module.runMain, native=false, column=18, file=node.js, function=startup, line=117, method=null, native=false, column=3, file=node.js, function=null, line=951, method=null, native=false], stack=[TypeError: Cannot read property 'createStrategy' of undefined,     at module.exports (e:\Sites\GMI\eventservices\server\kingslanding\lib\component\passport.js:32:26),     at Object.rest.lift (e:\Sites\GMI\eventservices\server\kingslanding\lib\component\restify.js:48:13),     at e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js:38:17,     at Object.mongo.lift (e:\Sites\GMI\eventservices\server\kingslanding\lib\component\mongoose.js:35:5),     at Object.server.lift (e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js:34:14),     at Object.<anonymous> (e:\Sites\GMI\eventservices\server\kingslanding\example\index.js:13:8),     at Module._compile (module.js:434:26),     at Object.Module._extensions..js (module.js:452:10),     at Module.load (module.js:355:32),     at Function.Module._load (module.js:310:12),     at Function.Module.runMain (module.js:475:10),     at startup (node.js:117:18),     at node.js:951:3]
+2016-05-04T14:23:24.455Z - verbose: Log: On
+2016-05-04T14:23:24.458Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:23:24.503Z - verbose: Routes:
+2016-05-04T14:23:24.509Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:23:24.510Z - info: Passport: local
+2016-05-04T14:23:24.537Z - error: uncaughtException: Cannot read property 'createStrategy' of undefined date=Wed May 04 2016 10:23:24 GMT-0400 (Eastern Daylight Time), pid=21500, uid=null, gid=null, cwd=e:\Sites\GMI\eventservices\server\kingslanding\example, execPath=c:\Program Files\nodejs\node.exe, version=v4.0.0, argv=[c:\Program Files\nodejs\node.exe, e:\Sites\GMI\eventservices\server\kingslanding\example\index.js], rss=51159040, heapTotal=37101568, heapUsed=20365120, loadavg=[0, 0, 0], uptime=7418758.408012, trace=[column=26, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\component\passport.js, function=module.exports, line=32, method=exports, native=false, column=13, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\component\restify.js, function=Object.rest.lift, line=48, method=rest.lift, native=false, column=17, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js, function=null, line=38, method=null, native=false, column=5, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\component\mongoose.js, function=Object.mongo.lift, line=35, method=mongo.lift, native=false, column=14, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js, function=Object.server.lift, line=34, method=server.lift, native=false, column=8, file=e:\Sites\GMI\eventservices\server\kingslanding\example\index.js, function=, line=13, method=null, native=false, column=26, file=module.js, function=Module._compile, line=434, method=_compile, native=false, column=10, file=module.js, function=Object.Module._extensions..js, line=452, method=Module._extensions..js, native=false, column=32, file=module.js, function=Module.load, line=355, method=load, native=false, column=12, file=module.js, function=Function.Module._load, line=310, method=Module._load, native=false, column=10, file=module.js, function=Function.Module.runMain, line=475, method=Module.runMain, native=false, column=18, file=node.js, function=startup, line=117, method=null, native=false, column=3, file=node.js, function=null, line=951, method=null, native=false], stack=[TypeError: Cannot read property 'createStrategy' of undefined,     at module.exports (e:\Sites\GMI\eventservices\server\kingslanding\lib\component\passport.js:32:26),     at Object.rest.lift (e:\Sites\GMI\eventservices\server\kingslanding\lib\component\restify.js:48:13),     at e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js:38:17,     at Object.mongo.lift (e:\Sites\GMI\eventservices\server\kingslanding\lib\component\mongoose.js:35:5),     at Object.server.lift (e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js:34:14),     at Object.<anonymous> (e:\Sites\GMI\eventservices\server\kingslanding\example\index.js:13:8),     at Module._compile (module.js:434:26),     at Object.Module._extensions..js (module.js:452:10),     at Module.load (module.js:355:32),     at Function.Module._load (module.js:310:12),     at Function.Module.runMain (module.js:475:10),     at startup (node.js:117:18),     at node.js:951:3]
+2016-05-04T14:23:32.487Z - verbose: Log: On
+2016-05-04T14:23:32.490Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:23:32.542Z - verbose: Routes:
+2016-05-04T14:23:32.548Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:23:32.549Z - info: Passport: local
+2016-05-04T14:23:32.575Z - error: uncaughtException: Cannot read property 'createStrategy' of undefined date=Wed May 04 2016 10:23:32 GMT-0400 (Eastern Daylight Time), pid=20012, uid=null, gid=null, cwd=e:\Sites\GMI\eventservices\server\kingslanding\example, execPath=c:\Program Files\nodejs\node.exe, version=v4.0.0, argv=[c:\Program Files\nodejs\node.exe, e:\Sites\GMI\eventservices\server\kingslanding\example\index.js], rss=50634752, heapTotal=37101568, heapUsed=20193128, loadavg=[0, 0, 0], uptime=7418766.446012, trace=[column=26, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\component\passport.js, function=module.exports, line=32, method=exports, native=false, column=13, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\component\restify.js, function=Object.rest.lift, line=48, method=rest.lift, native=false, column=17, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js, function=null, line=38, method=null, native=false, column=5, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\component\mongoose.js, function=Object.mongo.lift, line=35, method=mongo.lift, native=false, column=14, file=e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js, function=Object.server.lift, line=34, method=server.lift, native=false, column=8, file=e:\Sites\GMI\eventservices\server\kingslanding\example\index.js, function=, line=13, method=null, native=false, column=26, file=module.js, function=Module._compile, line=434, method=_compile, native=false, column=10, file=module.js, function=Object.Module._extensions..js, line=452, method=Module._extensions..js, native=false, column=32, file=module.js, function=Module.load, line=355, method=load, native=false, column=12, file=module.js, function=Function.Module._load, line=310, method=Module._load, native=false, column=10, file=module.js, function=Function.Module.runMain, line=475, method=Module.runMain, native=false, column=18, file=node.js, function=startup, line=117, method=null, native=false, column=3, file=node.js, function=null, line=951, method=null, native=false], stack=[TypeError: Cannot read property 'createStrategy' of undefined,     at module.exports (e:\Sites\GMI\eventservices\server\kingslanding\lib\component\passport.js:32:26),     at Object.rest.lift (e:\Sites\GMI\eventservices\server\kingslanding\lib\component\restify.js:48:13),     at e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js:38:17,     at Object.mongo.lift (e:\Sites\GMI\eventservices\server\kingslanding\lib\component\mongoose.js:35:5),     at Object.server.lift (e:\Sites\GMI\eventservices\server\kingslanding\lib\server.js:34:14),     at Object.<anonymous> (e:\Sites\GMI\eventservices\server\kingslanding\example\index.js:13:8),     at Module._compile (module.js:434:26),     at Object.Module._extensions..js (module.js:452:10),     at Module.load (module.js:355:32),     at Function.Module._load (module.js:310:12),     at Function.Module.runMain (module.js:475:10),     at startup (node.js:117:18),     at node.js:951:3]
+2016-05-04T14:23:43.568Z - verbose: Log: On
+2016-05-04T14:23:43.571Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:23:43.647Z - verbose: Routes:
+2016-05-04T14:23:43.678Z - verbose: [32m  [REST] [39m/user
+2016-05-04T14:23:43.683Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:23:43.685Z - info: Passport: local
+2016-05-04T14:23:43.722Z - verbose: Restify:  http://[::]:8085
+2016-05-04T14:24:57.981Z - verbose: Log: On
+2016-05-04T14:24:57.984Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:24:58.048Z - verbose: Routes:
+2016-05-04T14:24:58.077Z - verbose: [32m  [REST] [39m/user
+2016-05-04T14:24:58.081Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:24:58.082Z - info: Passport: local
+2016-05-04T14:24:58.115Z - verbose: Restify:  http://[::]:8085
+2016-05-04T14:26:31.146Z - verbose: Log: On
+2016-05-04T14:26:31.149Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:26:31.198Z - verbose: Routes:
+2016-05-04T14:26:31.218Z - verbose: [32m  [REST] [39m/user
+2016-05-04T14:26:31.222Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:26:31.223Z - info: Passport: local
+2016-05-04T14:26:31.250Z - verbose: Restify:  http://[::]:8085
+2016-05-04T14:28:30.468Z - verbose: Log: On
+2016-05-04T14:28:30.472Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:28:30.554Z - verbose: Routes:
+2016-05-04T14:28:30.588Z - verbose: [32m  [REST] [39m/user
+2016-05-04T14:28:30.593Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:28:30.594Z - info: Passport: local
+2016-05-04T14:28:30.632Z - verbose: Restify:  http://[::]:8085
+2016-05-04T14:29:29.541Z - verbose: Log: On
+2016-05-04T14:29:29.545Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:29:29.602Z - verbose: Routes:
+2016-05-04T14:29:29.627Z - verbose: [32m  [REST] [39m/user
+2016-05-04T14:29:29.632Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:29:29.633Z - info: Passport: local
+2016-05-04T14:29:29.664Z - verbose: Restify:  http://[::]:8085
+2016-05-04T14:30:31.048Z - verbose: Log: On
+2016-05-04T14:30:31.052Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:30:31.123Z - verbose: Routes:
+2016-05-04T14:30:31.155Z - verbose: [32m  [REST] [39m/user
+2016-05-04T14:30:31.159Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:30:31.160Z - info: Passport: local
+2016-05-04T14:30:31.198Z - verbose: Restify:  http://[::]:8085
+2016-05-04T14:32:43.121Z - verbose: Log: On
+2016-05-04T14:32:43.124Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:32:43.194Z - verbose: Routes:
+2016-05-04T14:32:43.225Z - verbose: [32m  [REST] [39m/user
+2016-05-04T14:32:43.230Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:32:43.232Z - info: Passport: local
+2016-05-04T14:32:43.268Z - verbose: Restify:  http://[::]:8085
+2016-05-04T14:33:00.407Z - verbose: Log: On
+2016-05-04T14:33:00.410Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:33:00.466Z - verbose: Routes:
+2016-05-04T14:33:00.488Z - verbose: [32m  [REST] [39m/user
+2016-05-04T14:33:00.492Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:33:00.493Z - info: Passport: local
+2016-05-04T14:33:00.522Z - verbose: Restify:  http://[::]:8085
+2016-05-04T14:33:00.532Z - verbose: user.ensureIndex({"createdAt":true}) {}
+2016-05-04T14:33:00.536Z - verbose: blog.ensureIndex({"createdAt":true}) {}
+2016-05-04T14:33:23.873Z - verbose: Log: On
+2016-05-04T14:33:23.877Z - verbose: Mongo: mongodb://localhost/test
+2016-05-04T14:33:23.941Z - verbose: Routes:
+2016-05-04T14:33:23.968Z - verbose: [32m  [REST] [39m/user
+2016-05-04T14:33:23.973Z - verbose: [32m  [REST] [39m/blog
+2016-05-04T14:33:23.974Z - info: Passport: local
+2016-05-04T14:33:24.008Z - verbose: Restify:  http://[::]:8085
+2016-05-04T14:33:24.018Z - verbose: Query: user.ensureIndex({"createdAt":true}) {}
+2016-05-04T14:33:24.022Z - verbose: Query: blog.ensureIndex({"createdAt":true}) {}
