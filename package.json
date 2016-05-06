@@ -1,6 +1,6 @@
 {
   "name": "kingslanding",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Quick backend server using Mongoose model and blueprint restified controllers.",
   "main": "lib/server.js",
   "scripts": {
