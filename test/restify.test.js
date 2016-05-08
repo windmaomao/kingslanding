@@ -19,11 +19,14 @@ var config = {
             controller: 'rest',
             REST: ['query', 'detail']
         },
-        blog: {}
+        blog: {},
+        comment: {},
     }
 };
 
 describe("Restify", function(){
+
+    var blogId, commentId;
 
     before(function(done) { server.lift(config, done); });
     after(function(done) { server.lower(done); });
@@ -32,12 +35,19 @@ describe("Restify", function(){
         request.get('/rest').expect(200, done);
     });
 
-    it("should route model query", function(done) {
+    it("should query model", function(done) {
         request.get('/blog').expect(200, done);
     });
 
-    it("should route model insert", function(done) {
-        request.post('/blog').send({}).expect(201, done);
+    it("should insert model", function(done) {
+        request.post('/blog').send({
+            title: 'blog title',
+        }).expect(201, function(err, result) {
+            if (err) return done(err);
+            blogId = result.body._id;
+            expect(blogId).not.to.be(undefined);
+            done();
+        });
     });
 
     it("should access models", function(done) {
@@ -48,6 +58,32 @@ describe("Restify", function(){
     it("should register model blog", function(done) {
         expect(server.models.blog).not.to.be(undefined);
         done();
+    });
+
+    it("should route referenced model query", function(done) {
+        request.get('/comment').expect(200, done);
+    });
+
+    it("should insert model with reference", function(done) {
+        request.post('/comment').send({
+            blogId: blogId,
+            title: 'comment title'
+        }).expect(201, function(err, result) {
+            if (err) return done(err);
+            commentId = result.body._id;
+            expect(commentId).not.to.be(undefined);
+            done();
+        });
+    });
+
+    it("should populate model reference", function(done) {
+        request.get('/comment/' + commentId).expect(200, function(err, result) {
+            if (err) return done(err);
+            var comment = result.body;
+            expect(comment.blog._id).to.be(blogId);
+            expect(comment.blogId).to.be(blogId);
+            done();
+        });
     });
 
 });
