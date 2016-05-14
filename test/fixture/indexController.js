@@ -20,4 +20,9 @@ module.exports = {
         res.send('hello');
         return next();
     },
+    schedule: function(job, done) {
+        job.finished = true;
+        console.log('schedule running ...');
+        return done();
+    }
 };
