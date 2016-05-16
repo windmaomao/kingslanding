@@ -9,6 +9,7 @@
 
 module.exports = {
     port: 8085,
+    mail: 'smtps://user%40gmail.com:pass@smtp.gmail.com',
     mongo: 'mongodb://localhost/test',
     model: __dirname,
     controller: __dirname,
