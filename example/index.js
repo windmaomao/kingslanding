@@ -7,7 +7,8 @@
  * @author Fang Jin <fang-a.jin@db.com>
  */
 
-var config = require('./config.js');
+var env = process.env._ENV || 'config';
+var config = require('./' + env + '.js');
 var server = require('../lib/server.js');
 
 server.lift(config, function() {
