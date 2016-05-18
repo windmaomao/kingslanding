@@ -16,7 +16,7 @@ var config = {
     mongo: 'mongodb://localhost/test',
     controller: '../../test/fixture',
     scheduler: '../../test/fixture',
-    schedule: {
+    schedules: {
         heartbeat: {
             frequency: '1 seconds',
             fn: function(job, done) {
