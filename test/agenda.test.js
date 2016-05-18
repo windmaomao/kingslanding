@@ -33,7 +33,8 @@ var config = {
         scheduler: {
             frequency: '1 minutes',
             fn: 'heartbeat'
-        }
+        },
+        heartbeat: '1 minutes',
     }
 };
 
@@ -77,5 +78,15 @@ describe("Agenda", function(){
             done();
         });
     });
+
+    it("should run schedule from scheduler", function(done) {
+        server.agenda.jobs({ name: 'heartbeat'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs[0].agenda._eventsCount).to.be(1);
+            expect(jobs[0].attrs.lastFinishedAt).not.to.be(undefined);
+            done();
+        });
+    });
+
 
 });
