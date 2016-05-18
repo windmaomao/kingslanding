@@ -15,6 +15,7 @@ var config = {
     port: options.port,
     mongo: 'mongodb://localhost/test',
     controller: '../../test/fixture',
+    scheduler: '../../test/fixture',
     schedule: {
         heartbeat: {
             frequency: '1 seconds',
@@ -28,6 +29,10 @@ var config = {
             frequency: '1 minutes',
             controller: 'index',
             fn: 'schedule'
+        },
+        scheduler: {
+            frequency: '1 minutes',
+            fn: 'heartbeat'
         }
     }
 };
@@ -45,7 +50,7 @@ describe("Agenda", function(){
     it("should register schedules", function(done) {
         server.agenda.jobs({}, function(err, jobs) {
             if (err) return done(err);
-            expect(jobs.length).to.be(2);
+            expect(jobs.length).to.be(3);
             done();
         });
     });
@@ -55,7 +60,7 @@ describe("Agenda", function(){
         done();
     });
 
-    it("should run schedule controller", function(done) {
+    it("should run schedule from controller action", function(done) {
         server.agenda.jobs({ name: 'controller'}, function(err, jobs) {
             if (err) return done(err);
             expect(jobs[0].agenda._eventsCount).to.be(1);
@@ -64,5 +69,13 @@ describe("Agenda", function(){
         });
     });
 
+    it("should run schedule from scheduler", function(done) {
+        server.agenda.jobs({ name: 'scheduler'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs[0].agenda._eventsCount).to.be(1);
+            expect(jobs[0].attrs.lastFinishedAt).not.to.be(undefined);
+            done();
+        });
+    });
 
 });
