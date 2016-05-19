@@ -4,13 +4,13 @@ A quick API server setup using mongoose and restify. Configuration files are use
 
 ## Installation
 
-npm install --save mongoose-restify-server
+npm install --save kingslanding
 
 ## Test
 
 mocha -w controller.test.js
 
-Currently you can not launch all tests, ex. mocha -w. There's a issue launching the server again with different configuration settings.
+Currently you can not launch all tests. There's a issue launching the server again with different configuration settings.
 
 ## Usage
 
@@ -18,14 +18,14 @@ index.js
 
 ```
 
-var server = require('mongoose-restify-server');
-server.lift(require('./config.js'), function() {
+var server = require('kingslanding');
+server.lift(config, function() {
     console.log('Server lifted.');
 });
 
 ```
 
-where the configuration settings can be defined in config.js
+where the configuration settings `config` can be defined either in a variable or in separate config.js as
 
 ```
 module.exports = {
