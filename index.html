@@ -36,7 +36,7 @@ npm install --save kingslanding
 
 </code></pre>
 
-<p>Create an index.js</p>
+<p>index.js</p>
 
 <pre><code>
 var server = require('kingslanding');
@@ -51,15 +51,56 @@ server.lift(config, function() {
 
 <p>Kingslanding is a quick API server. You can setup the settings for models, routes easily.</p>
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designer Templates</h3>
+<p>where the configuration variable <code>config</code> can be defined locally or in separate config.js file as</p>
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
+<p>config.js</p>
 
-<h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
+<pre><code>module.exports = {
+    port: 8085,
+    mongo: 'mongodb://localhost/test',
+    model: __dirname,
+    controller: __dirname,
+    routes: {
+        blog: {}
+    }
+}
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+</code></pre>
+
+<p>Here the blog is defined using Mongoose model in
+blog.js</p>
+
+<pre><code>
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var Mixed = Schema.Types.Mixed;
+module.exports = {
+    fields: {
+        title: { type: String },
+    },
+    options: {
+        collection: 'blog',
+        versionKey: false,
+        timestamps: {},
+        runValidators: false
+    },
+    methods: {},
+    indexes: {},
+    virtuals: {}
+}
+
+</code></pre>
+
+<p>Since we use a blueprint to do all the heavy lifting for us, we can just leave empty in 
+blogController.js (not optional, since you can add custom actions later)</p>
+
+<pre><code>
+module.exports = {
+};
+
+</code></pre>
+
+<p>That's it, if you fire the server, you should see a restful resources for blog on port 8085.</p>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
