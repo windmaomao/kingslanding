@@ -8,3 +8,5 @@ global.httpCall = function(req, res, next) {
     res.send('Hello server');
     next();
 };
+
+after(function(done) { server.lower(done); });

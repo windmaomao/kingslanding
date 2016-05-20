@@ -41,7 +41,7 @@ var config = {
 describe("Agenda", function(){
 
     before(function(done) { server.lift(config, done); });
-    after(function(done) { server.lower(done); });
+    // after(function(done) { server.lower(done); });
 
     it("should launch scheduling process", function(done) {
         expect(server.agenda).not.to.be(undefined);

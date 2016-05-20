@@ -95,7 +95,7 @@ var config = {
 describe("Route", function(){
 
     before(function(done) { server.lift(config, done); });
-    after(function(done) { server.lower(done); });
+    // after(function(done) { server.lower(done); });
 
     it("should ping entry page", function(done) {
         request.get('/').expect(200, done);

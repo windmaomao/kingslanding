@@ -55,7 +55,7 @@ var config = {
 describe("Controller", function(){
 
     before(function(done) { server.lift(config, done); });
-    after(function(done) { server.lower(done); });
+    // after(function(done) { server.lower(done); });
 
     it("should route controller GET", function(done) {
         var route = config.routes.ctrl;

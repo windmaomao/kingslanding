@@ -24,13 +24,8 @@ var user = { username: 'root', password: 'root' };
 
 describe("Passport", function(){
 
-    before(function(done) {
-        server.lift(config, done);
-    });
-
-    after(function(done) {
-        server.lower(done);
-    });
+    before(function(done) { server.lift(config, done); });
+    // after(function(done) { server.lower(done); });
 
     it("should route model query", function(done) {
         request.get('/blog').expect(200, done);

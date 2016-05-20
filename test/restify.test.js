@@ -29,7 +29,7 @@ describe("Restify", function(){
     var blogId, commentId;
 
     before(function(done) { server.lift(config, done); });
-    after(function(done) { server.lower(done); });
+    // after(function(done) { server.lower(done); });
 
     it("should route rest controller GET", function(done) {
         request.get('/rest').expect(200, done);
