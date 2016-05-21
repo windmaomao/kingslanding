@@ -17,5 +17,8 @@ module.exports = {
     routes: {
         user: {},
         blog: {}
+    },
+    plugins: {
+        comment: __dirname
     }
 }
