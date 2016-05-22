@@ -1,45 +1,25 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Kingslanding by windmaomao</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Kingslanding</h1>
+      <h2 class="project-tagline">Express server with Mongoose model, Restified controllers, Agenda schedulers, etc.</h2>
+      <a href="https://github.com/windmaomao/kingslanding" class="btn">View on GitHub</a>
+      <a href="https://github.com/windmaomao/kingslanding/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/windmaomao/kingslanding/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-      <header>
-        <h1>Kingslanding</h1>
-        <p>Express server with Mongoose model, Restified controllers, Agenda schedulers, etc.</p>
-      </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/windmaomao/kingslanding" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/windmaomao/kingslanding/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/windmaomao/kingslanding/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-        <h3>
+    <section class="main-content">
+      <h3>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
 
 <pre><code>
@@ -60,11 +40,9 @@ server.lift(config, function() {
 <h3>
 <a id="mongoose-model-with-restified-routes" class="anchor" href="#mongoose-model-with-restified-routes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mongoose model with restified routes.</h3>
 
-<p>Kingslanding is a quick API server. You can setup the settings for models, routes easily.</p>
+<p>Kingslanding is a quick API server. You can setup models, routes, schedules easily with config settings stored locally or in a separate file such as</p>
 
-<p>where the configuration variable <code>config</code> can be defined locally or in separate config.js file as</p>
-
-<p>config.js</p>
+<p><code>config.js</code></p>
 
 <pre><code>module.exports = {
     port: 8085,
@@ -78,8 +56,9 @@ server.lift(config, function() {
 
 </code></pre>
 
-<p>Here the blog is defined using Mongoose model in
-blog.js</p>
+<p>Blog model is defined via Mongoose in</p>
+
+<p><code>blog.js</code></p>
 
 <pre><code>
 var mongoose = require('mongoose');
@@ -102,8 +81,8 @@ module.exports = {
 
 </code></pre>
 
-<p>Since we use a blueprint to do all the heavy lifting for us, we can just leave empty in 
-blogController.js (not optional, since you can add custom actions later)</p>
+<p>Since Kingslanding uses blueprint to do all the heavy lifting for us, we can just leave empty for blog's controller 
+<code>blogController.js</code></p>
 
 <pre><code>
 module.exports = {
@@ -113,22 +92,14 @@ module.exports = {
 
 <p>That's it, if you fire the server, you should see a restful resources for blog on port 8085.</p>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/windmaomao/kingslanding">Kingslanding</a> is maintained by <a href="https://github.com/windmaomao">windmaomao</a>.</span>
 
-<p>You can <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/#mentioning-users-and-teams" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/windmaomao">windmaomao</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+
+    </section>
+
+  
   </body>
 </html>
