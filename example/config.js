@@ -19,6 +19,6 @@ module.exports = {
         blog: {}
     },
     plugins: {
-        comment: __dirname
+        comment: {}
     }
 }
