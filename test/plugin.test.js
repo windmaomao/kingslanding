@@ -10,63 +10,70 @@ require('./bootstrap');
 
 var config = {
     port: options.port,
-    // prefix: '/v1',
+    mongo: 'mongodb://localhost/test',
+    model: '../../test/fixture',
+    controller: '../../test/fixture',
+    prefix: '/v1',
+    routes: {
+        get: {
+            path: '/get',
+            GET: httpCall,
+        },
+        blog: {},
+    },
     plugins: {
-        comment: {
-            prefix: '/comment',
+        plugin: {
+            model: '../../test/fixture',
+            controller: '../../test/fixture',
+            prefix: '/',
             routes: {
                 get: {
                     path: '/get',
                     GET: httpCall,
                 },
+                ctrl: {
+                    path: '/ctrl',
+                    controller: 'index',
+                    GET: 'index',
+                },
+                plugin: {},
             }
         }
     }
 };
 
-describe("Controller", function(){
+describe("Plugin", function(){
 
     before(function(done) { server.lift(config, done); });
     // after(function(done) { server.lower(done); });
 
-    it("should route controller GET", function(done) {
-        var plugin = config.plugins.comment;
+    it("should route main GET", function(done) {
+        var route = config.prefix + config.routes.get.path;
+        request.get(route).expect(200, done);
+    });
+
+    it("should route plugin GET", function(done) {
+        var plugin = config.plugins.plugin;
         var route = plugin.prefix + plugin.routes.get.path;
         request.get(route).expect(200, done);
     });
 
-    // it("should route controller REST query", function(done) {
-    //     var route = config.routes.rest;
-    //     request.get(route.path).expect(200, done);
-    // });
-    //
-    // it("should route controller REST insert if defined", function(done) {
-    //     var route = config.routes.rest;
-    //     request.post(route.path).expect(405, done);
-    // });
-    //
-    // it("should route controller group GET", function(done) {
-    //     var group = config.routes.group;
-    //     var route = group.items.index;
-    //     request.get(group.path + route.path).expect(200, done);
-    // });
-    //
-    // it("should route controller group POST", function(done) {
-    //     var group = config.routes.group;
-    //     var route = group.items.debug;
-    //     request.post(group.path + route.path).expect(200, done);
-    // });
-    //
-    // it("should route controller group REST query", function(done) {
-    //     var group = config.routes.group;
-    //     var route = group.items.rest;
-    //     request.get(group.path + route.path).expect(200, done);
-    // });
-    //
-    // it("should route controller group REST insert if defined", function(done) {
-    //     var group = config.routes.group;
-    //     var route = group.items.rest;
-    //     request.post(group.path + route.path).expect(405, done);
-    // });
+    it("should route plugin controller GET", function(done) {
+        var plugin = config.plugins.plugin;
+        var route = plugin.prefix + plugin.routes.ctrl.path;
+        request.get(route).expect(200, done);
+    });
+
+    it("should query main model", function(done) {
+        var route = config.prefix + '/blog';
+        request.get(route).expect(200, done);
+    });
+
+    it("should query plugin model", function(done) {
+        var plugin = config.plugins.plugin;
+        var route = plugin.prefix + '/plugin';
+        request.get(route).expect(200, done);
+    });
+
 
 });

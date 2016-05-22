@@ -24,7 +24,7 @@ var config = {
     }
 };
 
-describe("Restify", function(){
+describe("Model", function(){
 
     var blogId, commentId;
 
