@@ -24,7 +24,7 @@ var config = {
     }
 };
 
-describe("Restify", function(){
+describe("Model", function(){
 
     var blogId, commentId;
 
@@ -84,6 +84,12 @@ describe("Restify", function(){
             expect(comment.blogId).to.be(blogId);
             done();
         });
+    });
+
+    it("should access model globally", function(done) {
+        expect(Blog).not.to.be(undefined);
+        expect(Models.blog).not.to.be(undefined);
+        done();
     });
 
 });
