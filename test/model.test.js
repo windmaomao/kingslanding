@@ -86,4 +86,10 @@ describe("Model", function(){
         });
     });
 
+    it("should access model globally", function(done) {
+        expect(Blog).not.to.be(undefined);
+        expect(Models.blog).not.to.be(undefined);
+        done();
+    });
+
 });
