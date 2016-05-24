@@ -13,6 +13,7 @@ var run = {
 }
 var config = {
     port: options.port,
+    debug: 'verbose',
     mongo: 'mongodb://localhost/test',
     controller: '../../test/fixture',
     scheduler: '../../test/fixture',
