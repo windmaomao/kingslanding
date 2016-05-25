@@ -47,6 +47,16 @@ var config = {
                 }
             ]
         }
+    },
+    plugins: {
+        plugin: {
+            scheduler: '../../test/fixture',
+            schedules: {
+                plugin: {
+                    once: 'in 2 minutes'
+                }
+            }
+        }
     }
 };
 
@@ -63,7 +73,7 @@ describe("Agenda", function(){
     it("should register schedules", function(done) {
         server.agenda.jobs({}, function(err, jobs) {
             if (err) return done(err);
-            expect(jobs.length).to.be(5);
+            expect(jobs.length).to.be(6);
             done();
         });
     });
@@ -116,5 +126,12 @@ describe("Agenda", function(){
         });
     });
 
+    it("should run schedule once from plugin", function(done) {
+        server.agenda.jobs({ name: 'plugin'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs.length).to.be(1);
+            done();
+        });
+    });
 
 });
