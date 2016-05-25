@@ -27,12 +27,15 @@ var config = {
             }
         },
         heartbeat: {
+            priority: 'high',
             every: '1 minutes',
         },
         heartbeatOnce: {
+            priority: 'low',
             once: 'in 1 minutes',
         },
         heartbeatJobs: {
+            concurrency: 1,
             jobs: [
                 {
                     data: { a: 1 },
@@ -73,8 +76,15 @@ describe("Agenda", function(){
     it("should run schedule repeat from scheduler", function(done) {
         server.agenda.jobs({ name: 'heartbeat'}, function(err, jobs) {
             if (err) return done(err);
-            expect(jobs[0].agenda._eventsCount).to.be(1);
-            expect(jobs[0].attrs.lastFinishedAt).not.to.be(undefined);
+            expect(jobs.length).to.be(1);
+            done();
+        });
+    });
+
+    it("should run schedule repeat with high priority", function(done) {
+        server.agenda.jobs({ name: 'heartbeat'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs[0].attrs.priority).to.be(10);
             done();
         });
     });
@@ -82,7 +92,15 @@ describe("Agenda", function(){
     it("should run schedule once from scheduler", function(done) {
         server.agenda.jobs({ name: 'heartbeatOnce'}, function(err, jobs) {
             if (err) return done(err);
-            expect(jobs[0].agenda._eventsCount).to.be(1);
+            expect(jobs.length).to.be(1);
+            done();
+        });
+    });
+
+    it("should run schedule once with low priority", function(done) {
+        server.agenda.jobs({ name: 'heartbeatOnce'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs[0].attrs.priority).to.be(-10);
             done();
         });
     });
