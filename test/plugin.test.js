@@ -13,6 +13,7 @@ var config = {
     mongo: 'mongodb://localhost/test',
     model: '../../test/fixture',
     controller: '../../test/fixture',
+    scheduler: '../../test/fixture',
     prefix: '/v1',
     routes: {
         get: {
@@ -21,6 +22,7 @@ var config = {
         },
         blog: {},
     },
+    schedules: {},
     plugins: {
         plugin: {
             model: '../../test/fixture',
@@ -37,6 +39,12 @@ var config = {
                     GET: 'index',
                 },
                 plugin: {},
+            },
+            scheduler: '../../test/fixture',
+            schedules: {
+                plugin: {
+                    once: 'in 2 minutes'
+                }
             }
         }
     }
@@ -75,5 +83,12 @@ describe("Plugin", function(){
         request.get(route).expect(200, done);
     });
 
+    it("should run plugin schedule", function(done) {
+        server.agenda.jobs({ name: 'plugin'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs.length).to.be(1);
+            done();
+        });
+    });
 
 });
