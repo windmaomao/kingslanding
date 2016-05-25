@@ -13,28 +13,40 @@ var run = {
 }
 var config = {
     port: options.port,
+    debug: 'verbose',
     mongo: 'mongodb://localhost/test',
     controller: '../../test/fixture',
     scheduler: '../../test/fixture',
     schedules: {
-        heartbeat: {
-            frequency: '1 seconds',
+        function: {
+            every: '1 seconds',
             fn: function(job, done) {
                 run.heartbeat = true;
                 console.log('heartbeating ...');
                 done();
             }
         },
-        controller: {
-            frequency: '1 minutes',
-            controller: 'index',
-            fn: 'schedule'
+        heartbeat: {
+            priority: 'high',
+            every: '1 minutes',
         },
-        scheduler: {
-            frequency: '1 minutes',
-            fn: 'heartbeat'
+        heartbeatOnce: {
+            priority: 'low',
+            once: 'in 1 minutes',
         },
-        heartbeat: '1 minutes',
+        heartbeatJobs: {
+            concurrency: 1,
+            jobs: [
+                {
+                    data: { a: 1 },
+                    every: '5 minutes'
+                },
+                {
+                    data: { b: 1 },
+                    once: 'in 1 minutes'
+                }
+            ]
+        }
     }
 };
 
@@ -51,39 +63,55 @@ describe("Agenda", function(){
     it("should register schedules", function(done) {
         server.agenda.jobs({}, function(err, jobs) {
             if (err) return done(err);
-            expect(jobs.length).to.be(3);
+            expect(jobs.length).to.be(5);
             done();
         });
     });
 
-    it("should run schedule heartbeat", function(done) {
-        expect(run.heartbeat).to.be.true;
+    it("should run schedule heartbeat with function", function(done) {
+        expect(run.function).to.be.true;
         done();
     });
 
-    it("should run schedule from controller action", function(done) {
-        server.agenda.jobs({ name: 'controller'}, function(err, jobs) {
-            if (err) return done(err);
-            expect(jobs[0].agenda._eventsCount).to.be(1);
-            expect(jobs[0].attrs.lastFinishedAt).not.to.be(undefined);
-            done();
-        });
-    });
-
-    it("should run schedule from scheduler", function(done) {
-        server.agenda.jobs({ name: 'scheduler'}, function(err, jobs) {
-            if (err) return done(err);
-            expect(jobs[0].agenda._eventsCount).to.be(1);
-            expect(jobs[0].attrs.lastFinishedAt).not.to.be(undefined);
-            done();
-        });
-    });
-
-    it("should run schedule from scheduler", function(done) {
+    it("should run schedule repeat from scheduler", function(done) {
         server.agenda.jobs({ name: 'heartbeat'}, function(err, jobs) {
             if (err) return done(err);
-            expect(jobs[0].agenda._eventsCount).to.be(1);
-            expect(jobs[0].attrs.lastFinishedAt).not.to.be(undefined);
+            expect(jobs.length).to.be(1);
+            done();
+        });
+    });
+
+    it("should run schedule repeat with high priority", function(done) {
+        server.agenda.jobs({ name: 'heartbeat'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs[0].attrs.priority).to.be(10);
+            done();
+        });
+    });
+
+    it("should run schedule once from scheduler", function(done) {
+        server.agenda.jobs({ name: 'heartbeatOnce'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs.length).to.be(1);
+            done();
+        });
+    });
+
+    it("should run schedule once with low priority", function(done) {
+        server.agenda.jobs({ name: 'heartbeatOnce'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs[0].attrs.priority).to.be(-10);
+            done();
+        });
+    });
+
+    it("should run schedule jobs from scheduler", function(done) {
+        server.agenda.jobs({ name: 'heartbeatJobs'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs.length).to.be(2);
+            jobs.map(function(job) {
+                expect(job.attrs.data).not.to.be(undefined);
+            });
             done();
         });
     });
