@@ -23,6 +23,7 @@ var config = {
         blog: {},
     },
     schedules: {},
+    plugger: '../../test/fixture',
     plugins: {
         plugin: {
             model: '../../test/fixture',
@@ -46,7 +47,8 @@ var config = {
                     once: 'in 2 minutes'
                 }
             }
-        }
+        },
+        local: {}
     }
 };
 
@@ -89,6 +91,12 @@ describe("Plugin", function(){
             expect(jobs.length).to.be(1);
             done();
         });
+    });
+
+    it("should register local plugin", function(done) {
+        var plugin = config.plugins.local;
+        var route = '/local';
+        request.get(route).expect(200, done);
     });
 
 });
