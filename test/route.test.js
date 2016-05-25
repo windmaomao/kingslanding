@@ -10,6 +10,7 @@ require('./bootstrap');
 
 var config = {
     port: 8085,
+    debug: 'verbose',
     routes: {
         /**
          * GET call
