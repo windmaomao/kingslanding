@@ -10,12 +10,16 @@
  */
 
 module.exports = {
-    // model: '',
+    model: '/model',
     // controller: '',
-    prefix: '/',
+    // prefix: '',
     routes: {
         local: {}
     },
     // scheduler: '',
-    // schedules: {}
+    schedules: {
+        local: {
+            once: 'in 2 minutes'
+        }
+    }
 };

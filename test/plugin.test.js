@@ -99,4 +99,12 @@ describe("Plugin", function(){
         request.get(route).expect(200, done);
     });
 
+    it("should run local plugin schedule", function(done) {
+        server.agenda.jobs({ name: 'local'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs.length).to.be(1);
+            done();
+        });
+    });
+
 });
