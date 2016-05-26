@@ -21,5 +21,10 @@ module.exports = {
         local: {
             once: 'in 2 minutes'
         }
+    },
+    hooks: {
+        restify: function(server, config) {
+            server.logger.info('Plugin', 'Local', 'On');
+        }
     }
 };
