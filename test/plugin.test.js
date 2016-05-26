@@ -48,6 +48,7 @@ var config = {
                 }
             }
         },
+        passport: {},
         local: {}
     }
 };
