@@ -23,7 +23,7 @@ var config = {
         blog: {},
     },
     schedules: {},
-    plugger: '../../test/fixture',
+    plugger: '../../test/fixture/plugin',
     plugins: {
         plugin: {
             model: '../../test/fixture',
@@ -93,9 +93,9 @@ describe("Plugin", function(){
         });
     });
 
-    it("should register local plugin", function(done) {
+    it("should query local plugin model", function(done) {
         var plugin = config.plugins.local;
-        var route = '/local';
+        var route = plugin.prefix + '/local';
         request.get(route).expect(200, done);
     });
 

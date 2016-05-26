@@ -10,11 +10,11 @@
  */
 
 module.exports = {
-    model: '',
-    controller: '',
+    // model: '',
+    // controller: '',
     prefix: '/',
     routes: {
-        plugin: {}
+        local: {}
     },
     // scheduler: '',
     // schedules: {}
