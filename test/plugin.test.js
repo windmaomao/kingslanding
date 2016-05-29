@@ -8,11 +8,16 @@
  */
 require('./bootstrap');
 
+var path = require('path');
+var fixturePath = path.join(__dirname, 'fixture');
+
 var config = {
     port: options.port,
+    debug: 'verbose',
     mongo: 'mongodb://localhost/test',
-    model: '../../test/fixture',
-    controller: '../../test/fixture',
+    model: fixturePath,
+    controller: fixturePath,
+    scheduler: fixturePath,
     prefix: '/v1',
     routes: {
         get: {
@@ -21,6 +26,8 @@ var config = {
         },
         blog: {},
     },
+    schedules: {},
+    plugger: path.join(fixturePath, 'plugin'),
     plugins: {
         plugin: {
             model: '../../test/fixture',
@@ -37,8 +44,16 @@ var config = {
                     GET: 'index',
                 },
                 plugin: {},
+            },
+            scheduler: '../../test/fixture',
+            schedules: {
+                plugin: {
+                    once: 'in 2 minutes'
+                }
             }
-        }
+        },
+        // passport: {},
+        local: {}
     }
 };
 
@@ -75,5 +90,35 @@ describe("Plugin", function(){
         request.get(route).expect(200, done);
     });
 
+    it("should run plugin schedule", function(done) {
+        server.agenda.jobs({ name: 'plugin'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs.length).to.be(1);
+            done();
+        });
+    });
+
+    it("should query local plugin model", function(done) {
+        var plugin = config.plugins.local;
+        var route = plugin.prefix + '/local';
+        request.get(route).expect(200, done);
+    });
+
+    it("should run local plugin schedule", function(done) {
+        server.agenda.jobs({ name: 'local'}, function(err, jobs) {
+            if (err) return done(err);
+            expect(jobs.length).to.be(1);
+            done();
+        });
+    });
+
+    // it("should return status false before login", function(done) {
+    //     var route = config.prefix + '/status';
+    //     request.get(route).send({}).expect(200, function(err, result) {
+    //         if (err) return done(err);
+    //         expect(result.body).to.be(false);
+    //         done();
+    //     });
+    // });
 
 });

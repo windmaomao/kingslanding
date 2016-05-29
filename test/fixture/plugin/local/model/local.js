@@ -1,27 +1,27 @@
 /**
- * Comment model module
+ * Plugin fixture model module
  *
  * @module mongo
  *
- * @date 5/20/16
+ * @date 5/21/16
  * @author Fang Jin <fang-a.jin@db.com>
  */
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Mixed = Schema.Types.Mixed;
+var ObjectId = Schema.Types.ObjectId;
 
 module.exports = {
     fields: {
         title: { type: String },
     },
     options: {
-        collection: 'comment',
+        collection: 'plugin',
         versionKey: false,
         timestamps: {},
         runValidators: false
     },
     methods: {},
     indexes: {},
-    virtuals: {}
+    virtuals: {},
 }
