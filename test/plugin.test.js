@@ -10,6 +10,7 @@ require('./bootstrap');
 
 var config = {
     port: options.port,
+    debug: 'verbose',
     mongo: 'mongodb://localhost/test',
     model: '../../test/fixture',
     controller: '../../test/fixture',
