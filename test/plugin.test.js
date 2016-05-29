@@ -108,4 +108,13 @@ describe("Plugin", function(){
         });
     });
 
+    it("should return status false before login", function(done) {
+        var route = config.prefix + '/status';
+        request.get(route).send({}).expect(200, function(err, result) {
+            if (err) return done(err);
+            expect(result.body).to.be(false);
+            done();
+        });
+    });
+
 });
