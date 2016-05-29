@@ -8,13 +8,16 @@
  */
 require('./bootstrap');
 
+var path = require('path');
+var fixturePath = path.join(__dirname, 'fixture');
+
 var config = {
     port: options.port,
     debug: 'verbose',
     mongo: 'mongodb://localhost/test',
-    model: '../../test/fixture',
-    controller: '../../test/fixture',
-    scheduler: '../../test/fixture',
+    model: fixturePath,
+    controller: fixturePath,
+    scheduler: fixturePath,
     prefix: '/v1',
     routes: {
         get: {
@@ -24,7 +27,7 @@ var config = {
         blog: {},
     },
     schedules: {},
-    plugger: '../../test/fixture/plugin',
+    plugger: path.join(fixturePath, 'plugin'),
     plugins: {
         plugin: {
             model: '../../test/fixture',
@@ -49,7 +52,7 @@ var config = {
                 }
             }
         },
-        passport: {},
+        // passport: {},
         local: {}
     }
 };
@@ -109,13 +112,13 @@ describe("Plugin", function(){
         });
     });
 
-    it("should return status false before login", function(done) {
-        var route = config.prefix + '/status';
-        request.get(route).send({}).expect(200, function(err, result) {
-            if (err) return done(err);
-            expect(result.body).to.be(false);
-            done();
-        });
-    });
+    // it("should return status false before login", function(done) {
+    //     var route = config.prefix + '/status';
+    //     request.get(route).send({}).expect(200, function(err, result) {
+    //         if (err) return done(err);
+    //         expect(result.body).to.be(false);
+    //         done();
+    //     });
+    // });
 
 });

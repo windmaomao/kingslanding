@@ -30,6 +30,6 @@ module.exports = {
     indexes: {},
     virtuals: {},
     plugins: {
-        'passport': {}
+        // 'passport': {}
     }
 }
