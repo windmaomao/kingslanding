@@ -24,7 +24,7 @@ module.exports = {
     },
     hooks: {
         restify: function(server, config) {
-            server.logger.info('Plugin', 'Local', 'On');
+            // server.logger.info('Plugin', 'Local', 'On');
         }
     }
 };

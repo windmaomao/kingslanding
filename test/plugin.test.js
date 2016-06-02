@@ -32,7 +32,7 @@ var config = {
         plugin: {
             model: '../../test/fixture',
             controller: '../../test/fixture',
-            prefix: '/',
+            prefix: '',
             routes: {
                 get: {
                     path: '/get',
