@@ -15,9 +15,10 @@ var config = {
     port: options.port,
     debug: 'verbose',
     mongo: 'mongodb://localhost/test',
-    model: fixturePath,
-    controller: fixturePath,
-    scheduler: fixturePath,
+    app: fixturePath,
+    model: '',
+    controller: '',
+    scheduler: '',
     prefix: '/v1',
     routes: {
         get: {
@@ -30,8 +31,9 @@ var config = {
     plugger: path.join(fixturePath, 'plugin'),
     plugins: {
         plugin: {
-            model: '../../test/fixture',
-            controller: '../../test/fixture',
+            app: fixturePath,
+            model: '',
+            controller: '',
             prefix: '',
             routes: {
                 get: {
@@ -45,7 +47,7 @@ var config = {
                 },
                 plugin: {},
             },
-            scheduler: '../../test/fixture',
+            scheduler: '',
             schedules: {
                 plugin: {
                     once: 'in 2 minutes'

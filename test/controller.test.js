@@ -10,7 +10,8 @@ require('./bootstrap');
 
 var config = {
     port: options.port,
-    controller: '../../test/fixture',
+    app: '../../test/fixture',
+    controller: '',
     routes: {
         /**
          * GET call with controller

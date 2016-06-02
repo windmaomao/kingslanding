@@ -11,8 +11,9 @@ require('./bootstrap');
 var config = {
     port: options.port,
     mongo: 'mongodb://localhost/test',
-    model: '../../test/fixture',
-    controller: '../../test/fixture',
+    app: '../../test/fixture',
+    model: '',
+    controller: '',
     routes: {
         rest: {
             path: '/rest',
