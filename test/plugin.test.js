@@ -28,13 +28,13 @@ var config = {
         blog: {},
     },
     schedules: {},
-    plugger: path.join(fixturePath, 'plugin'),
+    plugger: '/plugin',
     plugins: {
         plugin: {
             app: fixturePath,
             // model: '',
             // controller: '',
-            prefix: '',
+            prefix: '/v1',
             routes: {
                 get: {
                     path: '/get',
