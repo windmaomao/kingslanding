@@ -16,9 +16,9 @@ var config = {
     debug: 'verbose',
     mongo: 'mongodb://localhost/test',
     app: fixturePath,
-    model: '',
-    controller: '',
-    scheduler: '',
+    // model: '',
+    // controller: '',
+    // scheduler: '',
     prefix: '/v1',
     routes: {
         get: {
@@ -32,8 +32,8 @@ var config = {
     plugins: {
         plugin: {
             app: fixturePath,
-            model: '',
-            controller: '',
+            // model: '',
+            // controller: '',
             prefix: '',
             routes: {
                 get: {
@@ -47,7 +47,7 @@ var config = {
                 },
                 plugin: {},
             },
-            scheduler: '',
+            // scheduler: '',
             schedules: {
                 plugin: {
                     once: 'in 2 minutes'

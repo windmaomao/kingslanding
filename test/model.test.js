@@ -12,8 +12,8 @@ var config = {
     port: options.port,
     mongo: 'mongodb://localhost/test',
     app: '../../test/fixture',
-    model: '',
-    controller: '',
+    // model: '',
+    // controller: '',
     routes: {
         rest: {
             path: '/rest',
