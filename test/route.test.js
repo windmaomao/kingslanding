@@ -100,6 +100,16 @@ var config = {
                 res.send(server.options);
                 return next();
             }
+        },
+        /**
+         * Authenticate
+         */
+        authenticate: {
+            path: '/authenticate',
+            GET: httpCall,
+            authenticate: function(req, res, next) {
+                res.send(403);
+            }
         }
     }
 };
@@ -195,6 +205,11 @@ describe("Route", function(){
             expect(result.body.port).to.be(config.port);
             done();
         });
+    });
+
+    it("should route with authentication", function(done) {
+        var group = config.routes.authenticate;
+        request.get(group.path).expect(403, done);
     });
 
 });
