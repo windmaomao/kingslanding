@@ -89,6 +89,17 @@ var config = {
                 query: httpCall,
                 insert: httpCall,
             }
+        },
+        /**
+         * Server info
+         */
+        server: {
+            path: '/server',
+            GET: function(req, res, next) {
+                var server = req.server;
+                res.send(server.options);
+                return next();
+            }
         }
     }
 };
@@ -176,6 +187,14 @@ describe("Route", function(){
     it("should route mixed REST query", function(done) {
         var group = config.routes.mixed;
         request.post(group.path).expect(200, done);
+    });
+
+    it("should route carry server parameters", function(done) {
+        var group = config.routes.server;
+        request.get(group.path).expect(200).end(function(err, result) {
+            expect(result.body.port).to.be(config.port);
+            done();
+        });
     });
 
 });
